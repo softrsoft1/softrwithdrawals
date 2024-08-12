@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Withdrawals</title>
+    <title>Soft Return Investment Withdrawals</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Recent Bitcoin Withdrawals</h1>
-    <table id="withdrawalTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Amount (USD)</th>
-                <th>BTC Address</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows will be injected here by JavaScript -->
-        </tbody>
-    </table>
+    <header>
+        <h1>SOFT RETURN INVESTMENT</h1>
+    </header>
+
+    <div class="container">
+        <table id="withdrawalTable">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Address</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Records will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
+    </footer>
 
     <script src="script.js"></script>
 </body>

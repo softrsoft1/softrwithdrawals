@@ -1,49 +1,63 @@
-const names = [
-    "Liam", "Noah", "Oliver", "Emma", "Ava", "Mia", "Isabella", "Sophia",
-    "Ethan", "James", "Logan", "Lucas", "Olivia", "Charlotte", "Amelia", "Harper",
-    "Benjamin", "Henry", "Alexander", "Elijah", "Jacob", "Mason", "Ella", "Riley",
-    "Mbali", "Thabo", "Zanele", "Lindiwe", "Dineo", "Sifiso", "Nkosinathi", "Sibongile"
+// script.js
+
+const names = ["John Doe", "Jane Smith", "Robert Johnson", "Emily Davis", "Michael Brown"];
+const amounts = ["0.02 BTC", "0.5 USDT", "1.5 BTC", "0.8 BTC", "3 USDT"];
+const withdrawalAddresses = [
+    "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+    "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+    "1BoatSLRHtKNngkdXEeobR76b53LETtpyT",
+    "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwfczg2",
+    "bc1q504p6msuxlnk2jdfk20cmcvz8jdx36k7hz0fwq"
 ];
 
-const currencies = ["BTC", "USDT"];
-const addresses = [
-    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
-    "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7k7sw7w2", "1BoatSLRHtKNngkdXEeobR76b53LETtpyT",
-    "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c", "1HcLvg1S7UUYp4FudfAv6kF5uymd8eCGV8",
-    "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh", "1PEHaNrAgEAZs1nksCivpRRBaME6wXYXMF"
-];
+const totalTransactions = 400;
+let transactions = [];
 
-function getRandomItem(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
+// Generate 400 random transactions
+for (let i = 0; i < totalTransactions; i++) {
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+    const randomAddress = withdrawalAddresses[Math.floor(Math.random() * withdrawalAddresses.length)];
+
+    transactions.push({
+        name: randomName,
+        amount: randomAmount,
+        address: randomAddress
+    });
 }
 
-function generateRandomData() {
-    const data = [];
-    for (let i = 0; i < 200; i++) {
-        data.push({
-            name: getRandomItem(names),
-            amount: (Math.random() * (50000 - 50) + 50).toFixed(2),
-            currency: getRandomItem(currencies),
-            address: getRandomItem(addresses)
-        });
-    }
-    return data;
-}
+// Function to update the transaction list
+function updateTransactionList() {
+    const tbody = document.getElementById('transaction-tbody');
+    tbody.innerHTML = ''; // Clear current transactions
 
-function updateTable(data) {
-    const tableBody = document.getElementById('tableBody');
-    tableBody.innerHTML = '';
-    
+    // Select 10 random transactions to display
+    const selectedTransactions = [];
     for (let i = 0; i < 10; i++) {
-        const row = data[i];
-        const tr = document.createElement('tr');
-        
-        const nameTd = document.createElement('td');
-        nameTd.textContent = row.name;
-        tr.appendChild(nameTd);
-        
-        const amountTd = document.createElement('td');
-        amountTd.textContent = `$${row.amount}`;
-        tr.appendChild(amountTd);
-        
-        const currencyTd = document.cre
+        const randomIndex = Math.floor(Math.random() * transactions.length);
+        selectedTransactions.push(transactions[randomIndex]);
+    }
+
+    // Populate the table
+    selectedTransactions.forEach(transaction => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${transaction.name}</td>
+            <td>${transaction.amount}</td>
+            <td>${transaction.address}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Change transaction list every 5, 10, or 15 seconds
+function startTransactionUpdates() {
+    updateTransactionList();
+    const randomInterval = Math.floor(Math.random() * 3 + 1) * 5000; // 5, 10, or 15 seconds
+    setTimeout(() => {
+        startTransactionUpdates();
+    }, randomInterval);
+}
+
+// Start updating on page load
+document.addEventListener('DOMContentLoaded', startTransactionUpdates);

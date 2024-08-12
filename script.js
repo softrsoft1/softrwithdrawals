@@ -1,81 +1,72 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: white;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+// script.js
+
+const names = ["Liam", "Noah", "Olivia", "Emma", "Ava", "Elijah", "Lucas", "Mason", "Logan", "Sophia"];
+const amounts = ["0.05 BTC", "0.1 BTC", "0.25 USDT", "1.5 BTC", "0.75 BTC", "2 USDT", "0.02 BTC", "0.8 USDT", "0.03 BTC", "1 USDT"];
+const withdrawalAddresses = [
+    "bc1q9wdfdfg2hk93g72mgnr78y7fjx9yydwx6hwnm",
+    "bc1qhvdfdfgy7kr62g2gn72m9r78yfjx8lywdmx2m",
+    "1BoatSLRHtKNngkdXEeobR76b53LETtpyT",
+    "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy",
+    "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwfczg2"
+];
+
+const totalTransactions = 400;
+let transactions = [];
+
+// Generate random transactions
+for (let i = 0; i < totalTransactions; i++) {
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+    const randomAddress = withdrawalAddresses[Math.floor(Math.random() * withdrawalAddresses.length)];
+
+    transactions.push({
+        name: randomName,
+        amount: randomAmount,
+        address: randomAddress
+    });
 }
 
-header {
-    background: #292e49;
-    padding: 20px;
-}
+// Function to update the transaction list
+function updateTransactionList() {
+    const tbody = document.getElementById('transaction-tbody');
+    tbody.innerHTML = ''; // Clear current transactions
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-header p {
-    margin: 10px 0 0;
-    font-size: 1.2em;
-}
-
-#transaction-list {
-    margin: 30px auto;
-    width: 80%;
-    max-width: 1200px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-th {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-footer {
-    background: #292e49;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-footer button {
-    background: #ff7e5f;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-footer button:hover {
-    background: #feb47b;
-}
-
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
+    // Select 10 random transactions to display
+    const selectedTransactions = [];
+    for (let i = 0; i < 10; i++) {
+        const randomIndex = Math.floor(Math.random() * transactions.length);
+        selectedTransactions.push(transactions[randomIndex]);
     }
 
-    footer {
-        flex-direction: column;
-        gap: 10px;
-    }
+    // Populate the table
+    selectedTransactions.forEach(transaction => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${transaction.name}</td>
+            <td>${transaction.amount}</td>
+            <td>${transaction.address}</td>
+        `;
+        tbody.appendChild(row);
+    });
 }
+
+// Change transaction list every 5, 10, or 15 seconds
+function startTransactionUpdates() {
+    updateTransactionList();
+    const randomInterval = Math.floor(Math.random() * 3 + 1) * 5000; // 5, 10, or 15 seconds
+    setTimeout(() => {
+        startTransactionUpdates();
+    }, randomInterval);
+}
+
+// Display different lists based on the time of day
+function spreadTransactionsByTime() {
+    const hours = new Date().getHours();
+    const indexOffset = (hours * 40) % totalTransactions; // Spread over 24 hours
+    transactions = transactions.slice(indexOffset).concat(transactions.slice(0, indexOffset));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    spreadTransactionsByTime();
+    startTransactionUpdates();
+});

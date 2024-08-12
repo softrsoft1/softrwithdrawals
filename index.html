@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Softr Investment</title>
+    <title>Soft Return Investment - Withdrawal Proof</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>SOFTR INVESTMENT</h1>
-            <h2>Daily Withdrawal Proof</h2>
-        </header>
+    <header>
+        <h1>Soft Return Investment</h1>
+        <h2>Daily Withdrawal Proof</h2>
+    </header>
 
-        <main>
+    <main>
+        <div class="withdrawal-table">
             <table id="withdrawalTable">
                 <thead>
                     <tr>
-                        <th>Time</th>
                         <th>Name</th>
-                        <th>Amount</th>
+                        <th>Amount (USD)</th>
                         <th>Currency</th>
                         <th>Withdrawal Address</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Withdrawal list will be dynamically generated here -->
+                <tbody id="tableBody">
+                    <!-- Table rows will be dynamically populated by JavaScript -->
                 </tbody>
             </table>
-        </main>
+        </div>
+    </main>
 
-        <footer>
-            <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
-            <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
-            <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
-        </footer>
-    </div>
+    <footer>
+        <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

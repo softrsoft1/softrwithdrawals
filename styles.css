@@ -1,57 +1,49 @@
-// Function to generate random values
-function randomAmount() {
-    return (Math.random() * (100000 - 50) + 50).toFixed(2);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-function generateAddress(currency) {
-    const prefix = currency === 'BTC' ? '1' : currency === 'LTC' ? 'L' : '0x';
-    return prefix + Math.random().toString(36).substr(2, currency === 'USDT' ? 40 : 34);
+header {
+    background-color: #2a2a2a;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
 }
 
-function generateRandomName() {
-    return 'User' + Math.floor(Math.random() * 1000);
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
-// Create records
-const totalRecords = 1440;
-const btcRecords = Array.from({ length: 890 }, (_, i) => ({ type: 'BTC', amount: randomAmount(), address: generateAddress('BTC'), name: generateRandomName() }));
-const ltcRecords = Array.from({ length: 300 }, (_, i) => ({ type: 'LTC', amount: randomAmount(), address: generateAddress('LTC'), name: generateRandomName() }));
-const usdtRecords = Array.from({ length: 230 }, (_, i) => ({ type: 'USDT', amount: randomAmount(), address: generateAddress('USDT'), name: generateRandomName() }));
-
-// Combine records and shuffle
-const allRecords = [...btcRecords, ...ltcRecords, ...usdtRecords];
-shuffleArray(allRecords);
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-// Update the table with new records
-function updateTable() {
-    const now = new Date();
-    const hour = now.getHours();
-    const startIndex = Math.floor(hour * (totalRecords - 15) / 24);
-    const recordsToShow = allRecords.slice(startIndex, startIndex + 15);
-
-    const tableBody = document.querySelector('#withdrawalTable tbody');
-    tableBody.innerHTML = '';
-
-    recordsToShow.forEach(record => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="name">${record.name}</td>
-            <td class="amount">$${record.amount}</td>
-            <td class="currency">${record.type}</td>
-            <td class="address">${record.address}</td>
-        `;
-        tableBody.appendChild(row);
-    });
+thead {
+    background-color: #4CAF50;
+    color: white;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateTable();
-    setInterval(updateTable, Math.random() * (39000 - 16000) + 16000); // Update every 16 to 39 seconds
-});
+footer {
+    text-align: center;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

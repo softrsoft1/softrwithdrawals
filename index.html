@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soft Return Investment</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        .crypto-table thead th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+        .crypto-table tbody td {
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+        }
+        .crypto-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .crypto-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Soft Return Investment</h1>
-    </header>
-    <table id="crypto-table">
+
+    <h1>Soft Return Investment</h1>
+    <table class="crypto-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -19,14 +46,47 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Rows will be added here by JavaScript -->
+            <!-- Script to generate rows dynamically -->
+            <script>
+                const names = [
+                    "Anton", "Karin", "Louis", "Annelie", "Marinus", "Lizette", "Tiaan", "Lize", "Willem", "Janelle",
+                    "Jacques", "Mariette", "Niel", "Sonja", "Casper", "Hilda", "Ben", "Elsje", "Hester", "Pieter",
+                    // Add more names from the provided list as needed
+                ];
+
+                const withdrawalAddresses = [
+                    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "1BvBMSEYstWetqTFn5Au4m4GJt7w6W2ZbS", 
+                    "1L5Q98A7WydRUx4A9UJpRkxTrjtRy3A3dV", "1C7vB8Spj9HLfak9GfE6vx78h6FJ5d4n2F", 
+                    "1H5pL6Q5AQEo8J8sYwaH3vAWmP5P6jKw8v", "1Fpq6YoFjhePZxnPpqGVkcdKj8pN3wQhD2", 
+                    "1AVWpfjcs1fTW3TcT7dmK9K3f6LBJwCrHz", "1F4U5e3K9D57HKZW9o2Lz3i6L5hxd9g7N9", 
+                    "1M9pV8N6w6s2hr8x2rRGx4PVu7F6x4RA9Y", "1GfEZ56Bh8XTn2UekZQeS4UGR9fWrLG49Z"
+                    // Add more addresses from the provided list as needed
+                ];
+
+                function getRandomAmount() {
+                    return (Math.random() * (100000 - 50) + 50).toFixed(2);
+                }
+
+                function getRandomElement(array) {
+                    return array[Math.floor(Math.random() * array.length)];
+                }
+
+                for (let i = 0; i < 15; i++) {
+                    const name = getRandomElement(names);
+                    const amountWithdrawn = getRandomAmount();
+                    const withdrawalAddress = getRandomElement(withdrawalAddresses);
+
+                    document.write(`
+                        <tr>
+                            <td>${name}</td>
+                            <td>$${amountWithdrawn}</td>
+                            <td>${withdrawalAddress}</td>
+                        </tr>
+                    `);
+                }
+            </script>
         </tbody>
     </table>
-    <footer>
-        <button onclick="window.location.href='home.html';">Go to Home Page</button>
-        <button onclick="window.location.href='wallet.html';">Go to My Wallet</button>
-        <button onclick="window.location.href='invest.html';">Invest Now</button>
-    </footer>
-    <script src="script.js"></script>
+
 </body>
 </html>

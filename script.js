@@ -1,59 +1,54 @@
-// Function to generate random names
-const names = [
-    "John Doe", "Jane Smith", "Michael Brown", "Emily Davis",
-    "Liam Johnson", "Olivia Wilson", "Noah Lee", "Sophia Martin",
-    // Add more names as needed...
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const names = [
+        'John Doe', 'Jane Smith', 'Michael Johnson', 'Emily Davis',
+        'Chris Brown', 'Sarah Wilson', 'David Lee', 'Emma Lewis',
+        'Oliver Jones', 'Sophia Clark', 'Liam Harris', 'Ava Robinson',
+        'Noah Walker', 'Isabella Scott', 'Mason Turner', 'Mia Adams',
+        'Ethan Baker', 'Charlotte Hall', 'James Allen', 'Amelia Young',
+        // Add more names as needed
+    ];
 
-const generateRandomName = () => names[Math.floor(Math.random() * names.length)];
+    const cryptoAddresses = [
+        '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', '1Bz88k8C2F8Dfd7Y8Q2g9qv6QPUFDhzpq8', 
+        '3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy', '1EVgmE3tHSntzQ5R2wyGqFVv3WsjMjvsW8',
+        // Add more addresses as needed
+    ];
 
-// Function to generate random crypto address
-const generateRandomAddress = () => {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let address = '0x';
-    for (let i = 0; i < 40; i++) {
-        address += chars.charAt(Math.floor(Math.random() * chars.length));
+    const totalTransactions = 1115;
+    let currentIndex = 0;
+    
+    function getRandomName() {
+        return names[Math.floor(Math.random() * names.length)];
     }
-    return address;
-};
 
-// Function to generate random amount
-const generateRandomAmount = () => (Math.random() * (100000 - 50) + 50).toFixed(2);
-
-// Create an array of 1115 random transactions
-const transactions = [];
-for (let i = 0; i < 1115; i++) {
-    transactions.push({
-        name: generateRandomName(),
-        amount: generateRandomAmount(),
-        address: generateRandomAddress(),
-    });
-}
-
-// Function to update table rows
-const updateTable = (startIndex) => {
-    const tableBody = document.querySelector('#crypto-table tbody');
-    tableBody.innerHTML = '';
-    for (let i = startIndex; i < startIndex + 10 && i < transactions.length; i++) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${transactions[i].name}</td>
-            <td>$${transactions[i].amount}</td>
-            <td>${transactions[i].address}</td>
-        `;
-        tableBody.appendChild(row);
+    function getRandomAddress() {
+        return cryptoAddresses[Math.floor(Math.random() * cryptoAddresses.length)];
     }
-};
 
-// Function to get a random delay between 16 and 39 seconds
-const getRandomDelay = () => Math.floor(Math.random() * (39000 - 16000) + 16000);
+    function getRandomAmount() {
+        return (Math.random() * (50000 - 50) + 50).toFixed(2);
+    }
 
-// Initial display
-let currentIndex = 0;
-updateTable(currentIndex);
+    function generateTransactions() {
+        const tableBody = document.querySelector('#crypto-table tbody');
+        tableBody.innerHTML = '';
 
-// Update table every random interval
-setInterval(() => {
-    currentIndex = (currentIndex + 10) % transactions.length;
-    updateTable(currentIndex);
-}, getRandomDelay());
+        for (let i = 0; i < 10; i++) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${getRandomName()}</td>
+                <td>$${getRandomAmount()}</td>
+                <td>${getRandomAddress()}</td>
+            `;
+            tableBody.appendChild(row);
+        }
+    }
+
+    function updateTable() {
+        generateTransactions();
+        currentIndex = (currentIndex + 10) % totalTransactions;
+    }
+
+    updateTable();
+    setInterval(updateTable, Math.floor(Math.random() * (39000 - 16000 + 1)) + 16000); // 16 to 39 seconds
+});

@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #3a1d6b; /* Dark purple */
+    background-color: #3a1d6b; /* Dark Purple */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -37,13 +37,13 @@ table {
 }
 
 thead th {
-    background-color: #4caf50; /* Light active green */
+    background-color: #4caf50; /* Light Active Green */
     color: #fff;
     padding: 10px;
 }
 
 tbody td {
-    background-color: #fff8e1; /* Light yellow */
+    background-color: #fff8e1; /* Light Yellow */
     padding: 10px;
     text-align: center;
 }
@@ -53,7 +53,7 @@ footer {
     justify-content: center;
     gap: 10px;
     padding: 20px;
-    background-color: #3a1d6b; /* Dark purple */
+    background-color: #3a1d6b; /* Dark Purple */
 }
 
 footer .btn {
@@ -67,15 +67,15 @@ footer .btn {
     cursor: pointer;
 }
 
-footer .btn:nth-child(1) {
+footer .btn.home {
     background-color: #ff9800; /* Orange */
 }
 
-footer .btn:nth-child(2) {
+footer .btn.wallet {
     background-color: #4caf50; /* Green */
 }
 
-footer .btn:nth-child(3) {
+footer .btn.invest {
     background-color: #2196f3; /* Blue */
 }
 

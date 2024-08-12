@@ -5,17 +5,16 @@ const names = [
     'Lindiwe', 'Sibusiso', 'Mandisa', 'Lulama'
 ];
 
-const addresses = [
-    "L4J2T8N5X6d1M7Y3Uo9bP4Q5R8z2W1F6", "L7N5J2X8T4d6Y1M3Uo9bP2Q5R8z7W1F6", 
-    "L2T9J5X8d1M4Y6Uo7b3P9Q8R2z5W1F6X", "L5J8T2X4d1M7Y9Uo3b6P2Q8R5z1W7F6", 
-    "L8T2X5J4d9M6Y1Uo3b7P2Q8R4z5W1F6", "L3J1T8X2d5M6Y7Uo9b4P2Q8R5z1W7F6", 
-    "L6X5T9J4d2M8Y3Uo1b7P2Q9R4z5W1F6", "L9J2T4X5d6M7Y1Uo3b8P2Q9R5z1W7F6", 
-    "L2T5J8X4d1M6Y7Uo9b3P2Q8R4z5W1F6"
-        "L2T9J5X8d1M4Y6Uo7b3P9Q8R2z5W1F6X", "L5J8T2X4d1M7Y9Uo3b6P2Q8R5z1W7F6", 
-    "L8T2X5J4d9M6YDFGRT4F2Q8R4z5W1F6", "L3J1T8DGT565Uo9b4P2Q8R5z1W7F6", 
-    "L6X5T9J4GGDFGDF55DFGDQ9R4z5W1F6", "L94WET6YTRHGTGFJRU6H2Q9R5z1W7F6", 
-    "L2TRFDRET5ERYU76DF3P2Q8R4z5W1F6"
+const btcAddresses = [
+    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "12c6DSiU4Rq3P4ZxziKxzrL5Lt9J7Jzdw", 
+    "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy", "1dice8EMZmqKvrGE4Qc9bUFf9PX3xaYDp", 
+    "3Ai1JZ8pdJb2ksieUV8FsxSNVJCpoPi8W6", "1BoatSLRHtKNngkdXEeobR76b53LETtpyT"
+];
 
+const usdtAddresses = [
+    "TLP9Vas5Zv8y9e1YbgEQ6qX55X6APU4M7f", "TYyBoc2dLVEz8d8mjW2DPsYmr43Hg2btxJ", 
+    "TXgATywtdYP1U3EYrYW2Et7PfxKSkf4F1b", "TRwfqLCF2ZCZJr5VfZ7bMcTW9BSaUbbkvX", 
+    "TBkBPTP5oExLqDHKQ4y2X96wVNi6bW1ZBp", "TGjCV8AQrAFh9w7HR5w5nXvG5JwvTxJyxg"
 ];
 
 const tableBody = document.querySelector("#withdrawal-table tbody");
@@ -29,7 +28,7 @@ function generateRandomTransactions(count) {
     for (let i = 0; i < count; i++) {
         const name = names[Math.floor(Math.random() * names.length)];
         const amount = generateRandomAmount();
-        const address = addresses[Math.floor(Math.random() * addresses.length)];
+        const address = Math.random() > 0.5 ? btcAddresses[Math.floor(Math.random() * btcAddresses.length)] : usdtAddresses[Math.floor(Math.random() * usdtAddresses.length)];
         transactions.push({ name, amount, address });
     }
     return transactions;

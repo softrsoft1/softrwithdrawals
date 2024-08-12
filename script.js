@@ -1,78 +1,62 @@
-// Function to generate random names
-function getRandomName() {
-    const names = ['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Frank', 'Grace', 'Hannah', 'Ivy', 'Jack', 'Karen', 'Leo', 'Mia', 'Nina', 'Owen', 'Paula', 'Quinn', 'Ryan', 'Sophia', 'Tom', 'Uma', 'Vera', 'Will', 'Xena', 'Yara', 'Zane'];
-    return names[Math.floor(Math.random() * names.length)];
-}
+// Define records and state
+const totalRecords = 1440;
+const btcRecords = Array.from({ length: 890 }, (_, i) => ({ type: 'BTC', amount: randomAmount(), address: generateBtcAddress(), name: generateRandomName() }));
+const ltcRecords = Array.from({ length: 300 }, (_, i) => ({ type: 'LTC', amount: randomAmount(), address: generateLtcAddress(), name: generateRandomName() }));
+const usdtRecords = Array.from({ length: 230 }, (_, i) => ({ type: 'USDT', amount: randomAmount(), address: generateUsdtAddress(), name: generateRandomName() }));
 
-// Function to generate a random BTC address
-function getRandomBTCAddress() {
-    const chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-    let address = '1';
-    for (let i = 0; i < 33; i++) {
-        address += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return address;
-}
+// Combine records
+const allRecords = [...btcRecords, ...ltcRecords, ...usdtRecords];
+shuffleArray(allRecords);
 
-// Function to generate random withdrawal amount
-function getRandomAmount() {
+function randomAmount() {
     return (Math.random() * (100000 - 50) + 50).toFixed(2);
 }
 
-// Generate the full list of withdrawals
-const withdrawals = [];
-for (let i = 0; i < 1440; i++) {
-    withdrawals.push({
-        name: getRandomName(),
-        amount: getRandomAmount(),
-        address: getRandomBTCAddress()
+function generateBtcAddress() {
+    return '1' + Math.random().toString(36).substr(2, 34);
+}
+
+function generateLtcAddress() {
+    return 'L' + Math.random().toString(36).substr(2, 33);
+}
+
+function generateUsdtAddress() {
+    return '0x' + Math.random().toString(36).substr(2, 40);
+}
+
+function generateRandomName() {
+    return 'Name' + Math.floor(Math.random() * 1000);
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function updateTable() {
+    const now = new Date();
+    const hour = now.getHours();
+    const startIndex = Math.floor(hour * totalRecords / 24);
+    const endIndex = startIndex + 15;
+    const recordsToShow = allRecords.slice(startIndex, endIndex);
+
+    const tableBody = document.querySelector('#withdrawalTable tbody');
+    tableBody.innerHTML = '';
+
+    recordsToShow.forEach(record => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="amount">$${record.amount}</td>
+            <td class="address">${record.address}</td>
+            <td class="name">${record.name}</td>
+        `;
+        tableBody.appendChild(row);
     });
 }
 
-// Function to display a set of 15 withdrawals
-function displayWithdrawals(startIndex) {
-    const tableBody = document.querySelector('#withdrawalTable tbody');
-    tableBody.innerHTML = ''; // Clear current table
-
-    for (let i = startIndex; i < startIndex + 15; i++) {
-        if (i >= withdrawals.length) break;
-        const withdrawal = withdrawals[i];
-        const row = document.createElement('tr');
-
-        const nameCell = document.createElement('td');
-        nameCell.textContent = withdrawal.name;
-        row.appendChild(nameCell);
-
-        const amountCell = document.createElement('td');
-        amountCell.textContent = `$${withdrawal.amount}`;
-        row.appendChild(amountCell);
-
-        const addressCell = document.createElement('td');
-        addressCell.textContent = withdrawal.address;
-        row.appendChild(addressCell);
-
-        tableBody.appendChild(row);
-    }
-}
-
-// Function to calculate the start index based on time
-function calculateStartIndex() {
-    const now = new Date();
-    const totalMinutes = (now.getHours() * 60) + now.getMinutes();
-    const totalSets = Math.floor(1440 / 15);
-    const setIndex = Math.floor((totalMinutes / 1440) * totalSets);
-    return setIndex * 15;
-}
-
-// Initial display
-let currentIndex = calculateStartIndex();
-displayWithdrawals(currentIndex);
-
-// Update the display every 30 seconds
-setInterval(() => {
-    currentIndex += 15;
-    if (currentIndex >= withdrawals.length) {
-        currentIndex = 0;
-    }
-    displayWithdrawals(currentIndex);
-}, 30000);
+document.addEventListener('DOMContentLoaded', () => {
+    updateTable();
+    setInterval(updateTable, 30000); // Update every 30 seconds
+});

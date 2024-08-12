@@ -1,21 +1,25 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f0f0f0;
-    color: #333;
+    background-color: #f4f4f4;
 }
 
 header {
-    background: linear-gradient(45deg, #b59b58, #7d1b9d, #3a9b57);
-    color: white;
-    padding: 20px;
+    background-color: #3a1d6b; /* Dark purple */
+    color: #fff;
     text-align: center;
+    padding: 20px 0;
 }
 
-header h1, header h2 {
+header h1 {
     margin: 0;
+    font-size: 2em;
+}
+
+header h2 {
+    margin: 0;
+    color: #4caf50; /* Green */
 }
 
 main {
@@ -26,61 +30,74 @@ main {
 
 table {
     width: 100%;
-    max-width: 1200px;
     border-collapse: collapse;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    background-color: #fff;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+thead th {
+    background-color: #4caf50; /* Light active green */
+    color: #fff;
+    padding: 10px;
 }
 
-th {
-    background-color: #7d1b9d;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-footer {
-    background: #7d1b9d;
-    padding: 20px;
+tbody td {
+    background-color: #fff8e1; /* Light yellow */
+    padding: 10px;
     text-align: center;
 }
 
+tfoot {
+    background-color: #4caf50; /* Light active green */
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #3a1d6b; /* Dark purple */
+}
+
 footer .btn {
-    margin: 5px;
+    display: inline-block;
     padding: 10px 20px;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    text-align: center;
+    cursor: pointer;
 }
 
-.home-btn {
-    background-color: #b59b58;
+footer .btn:nth-child(1) {
+    background-color: #ff9800; /* Orange */
 }
 
-.wallet-btn {
-    background-color: #7d1b9d;
+footer .btn:nth-child(2) {
+    background-color: #4caf50; /* Green */
 }
 
-.invest-btn {
-    background-color: #3a9b57;
+footer .btn:nth-child(3) {
+    background-color: #2196f3; /* Blue */
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     table {
-        font-size: 14px;
+        font-size: 0.9em;
     }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
     footer .btn {
-        display: block;
-        margin: 10px auto;
+        margin: 5px 0;
     }
 }

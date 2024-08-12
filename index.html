@@ -3,36 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Return Investment - Withdrawal Explorer</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Soft Return Investment</h1>
-        <h2>Daily Withdrawal Proof</h2>
-    </header>
+    <title>Soft Return Investment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #654ea3, #eaafc8);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    <section>
-        <table id="withdrawal-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount Withdrawn</th>
-                    <th>Withdrawal Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- JavaScript will dynamically populate this -->
-            </tbody>
-        </table>
-    </section>
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #FFDD57;
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    <footer>
-        <button onclick="window.location.href='https://www.softrinvestment.com/'">GO TO HOME PAGE</button>
-        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">GO TO MY WALLET</button>
-        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">INVEST NOW</button>
-    </footer>
+        .transaction-table {
+            width: 90%;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-    <script src="script.js"></script>
-</body>
-</html>
+        .transaction-table th, .transaction-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .transaction-table th {
+            background-color: #42C2B4;
+            color: #000;
+        }
+
+        .transaction-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
+            padding: 20px;
+            background-color: #FFD700;
+        }
+
+        .footer-buttons a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #42C2B4;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-buttons a:hover {
+   

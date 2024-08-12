@@ -1,1 +1,51 @@
-const names = ["John Doe", "Jane Smith", "Mike Johnson", "Emily Davis", "Daniel Brown", "Olivia Wilson", "James Moore", "Sophia Taylor", "Liam Anderson", "Emma Thomas", "Noah Jackson", "Ava White", "Lucas Harris", "Isabella Clark", "Mason Lewis", "Mia Young", "Ethan Hall", "Amelia Allen", "Jacob Scott", "Harper Baker", "William Adams", "Evelyn Nelson", "Alexander Carter", "Abigail Mitchell", "Michael Perez", "Ella Roberts", "Benjamin Turner", "Grace Phillips", "Henry Campbell", "Chloe Evans", "Samuel Mitchell", "Sofia Gray", "David Thompson", "Riley Lewis", "Joseph Walker", "Avery Martinez", "Matthew Lewis", "Zoe Harris", "James Thompson", "Natalie Johnson", "Daniel Lee", "Hannah Wilson", "Logan Young", "Lily Scott", "Jackson Cooper", "Aria Lee", "Gabriel Rodriguez", "Charlotte King", "Anthony Walker", "Aubrey Scott", "Isaiah Campbell", "Samantha Mitchell", "Elijah Martinez", "Victoria Rodriguez", "Andrew Lee", "Scarlett Adams", "Joshua King", "Mila Clark", "Isaiah Harris", "Eleanor Hall", "Wyatt Wright", "Addison Walker", "Ryan Lewis", "Ariana White", "Christian Scott", "Leah Turner", "James White", "Ellie Evans", "Benjamin Lewis", "Aurora Taylor", "Henry Young", "Savannah Johnson", "Elena Taylor", "Lucas Clark", "Zoey Martinez", "Caleb Smith", "Camila Johnson", "Maverick Anderson", "Alice Scott", "Lincoln Moore", "Nora Martinez", "Jaxon Robinson", "Lila Green", "Levi Hill", "Elena Davis", "Jacob Lee", "Lydia Davis", "Ryan Lee", "Sadie Moore", "Jacob Wilson", "Lillian Taylor", "Jack Brown", "Ivy Walker", "Henry Brown", "Rosie Harris", "Oliver Hill", "Maya Clark", "Michael Allen", "Nina White", "Wyatt Davis", "Vivian Davis", "Owen Taylor", "Holly Scott", "Ethan Green", "Zara Brown", "Logan Lee", "Madeline Davis", "William Green", "Eloise Wilson", "Ethan Thomas", "Penelope Lee", "Joshua Smith", "Hazel Evans", "Benjamin Wright", "Sadie Davis", "Liam Robinson", "Anna Thomas", "Daniel Lee", "Elena White", "James Robinson", "Sophie Robinson", "Jack Evans", "Emma Green", "Ryan Taylor", "Emma Evans", "Sebastian Robinson", "Maya Hall", "William Johnson", "Ava Davis", "Owen Davis", "Addison Green", "Mason Harris", "Aubrey Adams", "Zachary Harris", "Clara Davis", "Elijah Smith", "Ellie Green", "Jackson White", "Zoey Green", "Alexander Green", "Natalie White", "John Hall", "Lila White", "Wyatt Johnson", "Hannah Evans", "Matthew White", "Grace Harris", "Jacob Brown", "Lillian White", "Joseph Green", "Harper White", "Owen Robinson", "Madison Scott", "Henry Robinson", "Lily Evans", "Ethan Scott", "Hannah Lee", "Samuel Johnson", "Evelyn Davis", "Lucas Green", "Mia Adams", "Matthew Robinson", "Avery Davis", "James Green", "Ella White", "William Hall", "Aria Davis", "Joshua Green", "Nora Smith", "David White", "Violet Davis", "Alexander Scott", "Nina Brown", "Michael Davis", "Nina Green", "Benjamin Harris", "Grace Green", "Liam Scott", "Aubrey White", "Ethan White", "Emma Scott", "Jackson Green", "Madison White", "Wyatt Brown", "Ella Green", "Ryan Brown", "Lydia White", "Oliver Davis", "Clara Harris", "Joseph Davis", "Addison Davis", "Matthew Hall", "Sadie Green", "James Green", "Ella Green", "Lucas White", "Nina White", "William Robinson", "Maya Green", "Mason Brown", "Mia Green", "Daniel Brown", "Zoey Green", "Avery White", "Nina Davis", "David Green", "Ivy Green", "Jackson Scott", "Sophie Green", "Henry Green", "Lila Green", "Caleb Green", "Emma Davis", "Elijah Davis", "Sofia Green", "Noah Green", "Mia Brown", "Jacob Green", "Ariana Brown", "William Davis", "Isabella Green", "Benjamin Brown", "Harper Green", "Elijah Green", "Emma Green", "Caleb Davis", "Clara Green", "Henry Davis", "Avery Green", "Evelyn Green", "Benjamin Brown", "Elena Green", "Nora Davis", "Samantha Green", "Leah Green", "Jacob Green", "Lydia Green", "Joshua Davis", "Aria Brown", "Harper Brown", "David Brown", "Madeline Green", "Wyatt Green", "Anna Green", "Owen Green", "Rosie Davis", "Ella Davis", "Benjamin White", "Violet Green", "Ivy Brown", "Madison Green", "Evelyn White", "Harper Green", "Samuel Green", "Owen Davis", "Charlotte Green", "Ethan Davis", "Lila Green", "Nina Green", "John Brown", "Aubrey Green", "James Green", "Lily Green", "Benjamin Davis", "Emily Davis",
+// Example data
+const names = [
+    "John Doe", "Jane Smith", "Mike Johnson", "Emily Davis", "Daniel Brown",
+    "Olivia Wilson", "James Moore", "Sophia Taylor", "Liam Anderson", "Emma Thomas",
+    // Add 1115 unique names here...
+];
+
+const addresses = [
+    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa", "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy", "bc1qar0srrr7nck6zrfb4y1h4uh4px27f4qk9e4dd2", 
+    "3Fa5Aj7oQp4S8ZyqH4z9A2Kc6qM1YzVbEq", "bc1qqe4l4q9zqw2yl5q6a3f7svsl8n6y7t5x2p9vvu",
+    // Add 1115 unique addresses here...
+];
+
+const generateRandomTransaction = () => {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const amount = (Math.random() * (50000 - 50) + 50).toFixed(2);
+    const address = addresses[Math.floor(Math.random() * addresses.length)];
+    return { name, amount, address };
+};
+
+const updateTable = () => {
+    const tableBody = document.querySelector('#cryptoTable tbody');
+    tableBody.innerHTML = '';
+
+    const transactions = [];
+    while (transactions.length < 10) {
+        const transaction = generateRandomTransaction();
+        if (!transactions.some(t => t.name === transaction.name && t.amount === transaction.amount && t.address === transaction.address)) {
+            transactions.push(transaction);
+        }
+    }
+
+    transactions.forEach(({ name, amount, address }) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${name}</td><td>$${amount}</td><td>${address}</td>`;
+        tableBody.appendChild(row);
+    });
+};
+
+const updateInterval = () => {
+    const interval = Math.floor(Math.random() * (39000 - 16000) + 16000);
+    setTimeout(() => {
+        updateTable();
+        updateInterval();
+    }, interval);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateTable();
+    updateInterval();
+});

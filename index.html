@@ -9,23 +9,23 @@
 <body>
     <header>
         <h1>Soft Return Investment</h1>
-        <h2>Daily Withdrawal Proof</h2>
+        <p>Daily Withdrawal Proof</p>
     </header>
 
-    <main>
-        <table id="withdrawal-table">
+    <section id="transaction-list">
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Amount (USD)</th>
+                    <th>Amount Withdrawn</th>
                     <th>Withdrawal Address</th>
                 </tr>
             </thead>
-            <tbody id="table-body">
-                <!-- Table rows will be injected by JavaScript -->
+            <tbody id="transaction-tbody">
+                <!-- Data will be dynamically populated here by JS -->
             </tbody>
         </table>
-    </main>
+    </section>
 
     <footer>
         <button onclick="location.href='https://www.softrinvestment.com/'">Go to Home Page</button>

@@ -1,103 +1,97 @@
+/* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
-    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 30%, #2a5298 70%);
+    color: #fff;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #6a0dad;
-    color: #ffffff;
+    background-color: #16222A;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
+    font-size: 2.5em;
     margin: 0;
-    font-size: 2.5rem;
-    color: #ffff00;
 }
 
-header h2 {
+header p {
+    font-size: 1.2em;
     margin: 10px 0 0;
-    font-size: 1.5rem;
-    color: #ffffff;
 }
 
-.withdrawal-table {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 800px;
-    background-color: #333;
-    border-radius: 10px;
-    overflow: hidden;
+#transaction-list {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 table {
-    width: 100%;
+    width: 80%;
+    max-width: 1000px;
     border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
     text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-thead {
-    background-color: #6a0dad;
+th {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-thead th {
-    padding: 15px;
-    font-size: 1rem;
-    color: #ffff00;
-}
-
-tbody tr {
-    transition: background-color 0.3s;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #2e2e2e;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #3c3c3c;
-}
-
-tbody td {
-    padding: 15px;
-    font-size: 0.9rem;
-    color: #ffffff;
+td {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 footer {
-    text-align: center;
+    background-color: #16222A;
     padding: 20px;
-    background-color: #6a0dad;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 footer button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
+    background-color: #FF416C;
+    color: #fff;
     border: none;
+    padding: 10px 20px;
+    font-size: 1em;
     border-radius: 5px;
-    color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 footer button:hover {
-    background-color: #ffff00;
-    color: #6a0dad;
+    background-color: #FF4B2B;
 }
 
-footer button:first-of-type {
-    background-color: #009688;
-}
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
 
-footer button:nth-of-type(2) {
-    background-color: #e91e63;
-}
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-footer button:last-of-type {
-    background-color: #ff9800;
+    table {
+        width: 100%;
+    }
 }

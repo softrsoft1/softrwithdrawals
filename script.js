@@ -1,44 +1,59 @@
-// List of names, addresses, and some example data
-const names = ["Anton", "Karin", "Louis", "Annelie", "Marinus", /* Add all names here */];
-const addresses = [
-    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
-    "1BvBMSEYstWetqTFn5Au4m4GJt7w6W2ZbS",
-    /* Add all addresses here */
+// Function to generate random names
+const names = [
+    "John Doe", "Jane Smith", "Michael Brown", "Emily Davis",
+    "Liam Johnson", "Olivia Wilson", "Noah Lee", "Sophia Martin",
+    // Add more names as needed...
 ];
 
+const generateRandomName = () => names[Math.floor(Math.random() * names.length)];
+
+// Function to generate random crypto address
+const generateRandomAddress = () => {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let address = '0x';
+    for (let i = 0; i < 40; i++) {
+        address += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return address;
+};
+
 // Function to generate random amount
-function getRandomAmount() {
-    return (Math.random() * (100000 - 50) + 50).toFixed(2);
+const generateRandomAmount = () => (Math.random() * (100000 - 50) + 50).toFixed(2);
+
+// Create an array of 1115 random transactions
+const transactions = [];
+for (let i = 0; i < 1115; i++) {
+    transactions.push({
+        name: generateRandomName(),
+        amount: generateRandomAmount(),
+        address: generateRandomAddress(),
+    });
 }
 
-// Function to populate the table with random data
-function populateTable() {
+// Function to update table rows
+const updateTable = (startIndex) => {
     const tableBody = document.querySelector('#crypto-table tbody');
-    tableBody.innerHTML = ''; // Clear previous rows
-
-    for (let i = 0; i < 15; i++) { // Show 15 records at a time
+    tableBody.innerHTML = '';
+    for (let i = startIndex; i < startIndex + 10 && i < transactions.length; i++) {
         const row = document.createElement('tr');
-        
-        const nameCell = document.createElement('td');
-        nameCell.textContent = names[Math.floor(Math.random() * names.length)];
-        row.appendChild(nameCell);
-        
-        const amountCell = document.createElement('td');
-        amountCell.textContent = `$${getRandomAmount()}`;
-        row.appendChild(amountCell);
-        
-        const addressCell = document.createElement('td');
-        addressCell.textContent = addresses[Math.floor(Math.random() * addresses.length)];
-        row.appendChild(addressCell);
-        
+        row.innerHTML = `
+            <td>${transactions[i].name}</td>
+            <td>$${transactions[i].amount}</td>
+            <td>${transactions[i].address}</td>
+        `;
         tableBody.appendChild(row);
     }
-}
+};
 
-// Populate table on page load
-document.addEventListener('DOMContentLoaded', () => {
-    populateTable();
-    
-    // Update table every 20 seconds
-    setInterval(populateTable, 20000);
-});
+// Function to get a random delay between 16 and 39 seconds
+const getRandomDelay = () => Math.floor(Math.random() * (39000 - 16000) + 16000);
+
+// Initial display
+let currentIndex = 0;
+updateTable(currentIndex);
+
+// Update table every random interval
+setInterval(() => {
+    currentIndex = (currentIndex + 10) % transactions.length;
+    updateTable(currentIndex);
+}, getRandomDelay());

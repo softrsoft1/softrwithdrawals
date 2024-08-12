@@ -3,65 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOFT RETURN INVESTMENT - Proof of Daily Withdrawal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1c1c1c;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #4a2f7c;
-            color: #fff;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            max-width: 1200px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #6c3aab;
-            color: #fff;
-        }
-        tbody tr:nth-child(even) {
-            background-color: #333;
-        }
-        .footer {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: #4a2f7c;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        .footer button {
-            padding: 15px 30px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .home-btn {
-            background-color: #ff9800;
-            color: #fff;
-        }
-        .wallet-btn {
-            background-color: #4caf50;
-            color: #fff;
-        }
-        .invest-btn {
-            background-color: #9c27b0;
-            color: #fff;
-        }
-        @media screen and (
+    <title>SOFT RETURN INVESTMENT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SOFT RETURN INVESTMENT</h1>
+        <h2>Daily Withdrawal Proof</h2>
+    </header>
+    <main>
+        <table id="crypto-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount Withdrawn</th>
+                    <th>Withdrawal Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <button onclick="window.location.href='https://www.softrinvestment.com/'" class="footer-button home">Go to Home Page</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'" class="footer-button wallet">Go to My Wallet</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'" class="footer-button invest">Invest Now</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

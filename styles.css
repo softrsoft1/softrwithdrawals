@@ -1,73 +1,59 @@
+/* Colorful background for the entire page */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #8A2BE2, #4CAF50, #FFD700);
+    background: linear-gradient(120deg, #4CAF50, #8A2BE2, #FFD700);
     color: #ffffff;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header styling with a colorful gradient */
 header {
     text-align: center;
     padding: 20px;
-    background: linear-gradient(135deg, #FFD700, #4CAF50);
-    color: #0b0b0b;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #8A2BE2, #FFD700, #4CAF50);
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
     margin: 0;
     font-size: 2.5em;
-    color: #8A2BE2;
+    color: #FFD700;
+    text-shadow: 2px 2px #4CAF50;
 }
 
 h2 {
     margin: 5px 0;
     font-size: 1.5em;
     color: #4CAF50;
+    text-shadow: 1px 1px #FFD700;
 }
 
+/* Section to hold the table */
 section {
-    margin: 20px auto;
+    flex-grow: 1;
+    padding: 20px;
     max-width: 1200px;
-    padding: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #333;
-    color: #FFF;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-thead {
-    background-color: #444;
+/* Footer with colorful gradient and shadow */
+footer {
+    padding: 20px;
+    background: linear-gradient(45deg, #FFD700, #4CAF50, #8A2BE2);
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
 }
 
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #555;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #2C2C2C;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #1C1C1C;
-}
-
-tbody tr:hover {
-    background-color: #444;
-}
-
-tfoot {
-    background-color: #252525;
-}
-
+/* Buttons with a colorful gradient, animation, and shadow */
 button {
     margin: 10px;
     padding: 15px 30px;
@@ -77,29 +63,12 @@ button {
     cursor: pointer;
     color: #FFF;
     border-radius: 5px;
-    background: linear-gradient(45deg, #FFD700, #8A2BE2, #4CAF50);
+    background: linear-gradient(45deg, #4CAF50, #8A2BE2, #FFD700);
     background-size: 200% 200%;
     animation: gradientMove 5s ease infinite;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-    opacity: 0.9;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 768px) {
-    th, td {
-        padding: 10px;
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
+    transform: translateY(-2px

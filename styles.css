@@ -1,62 +1,87 @@
-const names = [
-    'John Smith', 'Jane Doe', 'Michael Johnson', 'Emily Davis', 'Daniel Wilson',
-    'Sarah Brown', 'James Taylor', 'Linda Moore', 'David Anderson', 'Laura Thomas',
-    'Chris Jackson', 'Jessica White', 'Matthew Harris', 'Olivia Martin', 'Andrew Thompson',
-    'Sophia Robinson', 'Daniel Garcia', 'Isabella Martinez', 'Ethan Clark', 'Charlotte Lee',
-    'Jacob Lewis', 'Ava Walker', 'William Hall', 'Mia Allen', 'James Young',
-    'Lucas Scott', 'Madison Lewis', 'Jackson Clark', 'Avery Hall', 'Liam Young',
-    'Mason Harris', 'Ella Lee', 'Ethan Walker', 'Zoe Brown', 'Noah Allen',
-    // More names...
-];
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-const generateRandomAddress = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let address = '0x';
-    for (let i = 0; i < 40; i++) {
-        address += chars.charAt(Math.floor(Math.random() * chars.length));
+header {
+    background-color: #4b0082; /* Dark Purple */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+h2 {
+    color: #32cd32; /* Green */
+    margin: 5px 0 0;
+}
+
+main {
+    margin: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: #32cd32; /* Light Active Green */
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    background-color: #ffffe0; /* Light Yellow */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tfoot {
+    background-color: #4b0082;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+footer button {
+    background-color: #32cd32;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+footer button:hover {
+    background-color: #4b0082;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 5px;
     }
-    return address;
-};
 
-const generateRandomAmount = () => {
-    return (Math.floor(Math.random() * (50000 - 50 + 1)) + 50).toFixed(2);
-};
-
-const generateRandomData = (count) => {
-    let data = [];
-    for (let i = 0; i < count; i++) {
-        const name = names[Math.floor(Math.random() * names.length)];
-        const amount = `$${generateRandomAmount()}`;
-        const address = generateRandomAddress();
-        data.push({ name, amount, address });
+    footer button {
+        padding: 8px 15px;
+        font-size: 0.9em;
     }
-    return data;
-};
-
-const updateTable = () => {
-    const data = generateRandomData(400);
-    let currentIndex = 0;
-
-    const displayData = () => {
-        const tableBody = document.querySelector('#crypto-table tbody');
-        tableBody.innerHTML = '';
-
-        for (let i = 0; i < 10; i++) {
-            const row = document.createElement('tr');
-            const { name, amount, address } = data[(currentIndex + i) % data.length];
-            row.innerHTML = `
-                <td>${name}</td>
-                <td>${amount}</td>
-                <td>${address}</td>
-            `;
-            tableBody.appendChild(row);
-        }
-
-        currentIndex = (currentIndex + 10) % data.length;
-    };
-
-    displayData();
-    setInterval(displayData, Math.floor(Math.random() * (30000 - 10000 + 1)) + 10000);
-};
-
-window.onload = updateTable;
+}

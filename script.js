@@ -1,49 +1,45 @@
-const names = [
-    'James Taylor', 'Linda Moore', 'David Anderson', 'Laura Thomas',
-    'Chris Jackson', 'Jessica White', 'Matthew Harris', 'Olivia Martin', 
-    'Andrew Thompson', 'Sophia Robinson', 'Daniel Garcia', 'Isabella Martinez', 
-    'Ethan Clark', 'Charlotte Lee'
+const withdrawalData = [
+    { roll: 1, name: 'James Taylor', amount: '$500', address: '1M8T2J4M6Y5D9b1e3X7R1H1W1P1K6X1' },
+    { roll: 2, name: 'Linda Moore', amount: '$1,000', address: '1N2J5T8M4Y6D9b1e3X7R1H1W1P1K6X1' },
+    // Add all the other names and data here
+    { roll: 3, name: 'David Anderson', amount: '$10,000', address: '1P5T8J2M4Y6D9b1e3X7R1H1W1P1K6X1' },
+    // ...
 ];
 
-const btcAddresses = [
-    "1M8T2J4M6Y5D9b1e3X7R1H1W1P1K6X1", "1N2J5T8M4Y6D9b1e3X7R1H1W1P1K6X1", 
-    "1P5T8J2M4Y6D9b1e3X7R1H1W1P1K6X1", "1Q2J5T4M6Y9D1b3e8X7R1H1W1P1K6X1", 
-    "1R5T2J8M4Y6D9b1e3X7R1H1W1P1K6X1", "1S8T4J2M5Y6D9b1e3X7R1H1W1P1K6X1", 
-    "1T2J5T6M4Y9D1b3e7X7R1H1W1P1K6X1", "1U5J8T2M4Y6D9b1e3X7R1H1W1P1K6X1", 
-    "1V2T5J8M6Y4D9b1e3X7R1H1W1P1K6X1", "L9J2T4X5d6M7Y1Uo3b8P2Q9R5z1W7F6", 
-    "L2T5J8X4d1M6Y7Uo9b3P2Q8R4z5W1F6"
-];
-
-function getRandomAmount() {
-    return '$' + (Math.random() * (40000 - 50) + 50).toFixed(2);
-}
-
-const transactionRoll = document.querySelector('#transaction-roll tbody');
 let currentIndex = 0;
+const displayTime = 15000; // Change every 15 seconds
 
-function displayTransaction() {
-    // Clear the table body
-    transactionRoll.innerHTML = '';
+function updateTable() {
+    const tableBody = document.getElementById('withdrawal-list');
+    tableBody.innerHTML = '';
 
-    // Create a new table row for the current transaction
-    const tr = document.createElement('tr');
-    
-    tr.innerHTML = `
-        <td>${names[currentIndex]}</td>
-        <td>${getRandomAmount()}</td>
-        <td>${btcAddresses[Math.floor(Math.random() * btcAddresses.length)]}</td>
-    `;
+    const data = withdrawalData.slice(currentIndex, currentIndex + 5);
 
-    // Append the row to the table body
-    transactionRoll.appendChild(tr);
+    data.forEach(item => {
+        const row = document.createElement('tr');
 
-    // Move to the next name, cycling back to the start if necessary
-    currentIndex = (currentIndex + 1) % names.length;
+        const rollCell = document.createElement('td');
+        rollCell.textContent = item.roll;
 
-    // Change display time (5, 10, or 15 seconds)
-    const displayTime = [5000, 10000, 15000][Math.floor(Math.random() * 3)];
-    setTimeout(displayTransaction, displayTime);
+        const nameCell = document.createElement('td');
+        nameCell.textContent = item.name;
+
+        const amountCell = document.createElement('td');
+        amountCell.textContent = item.amount;
+
+        const addressCell = document.createElement('td');
+        addressCell.textContent = item.address;
+
+        row.appendChild(rollCell);
+        row.appendChild(nameCell);
+        row.appendChild(amountCell);
+        row.appendChild(addressCell);
+
+        tableBody.appendChild(row);
+    });
+
+    currentIndex = (currentIndex + 5) % withdrawalData.length;
 }
 
-// Start the display loop
-displayTransaction();
+setInterval(updateTable, displayTime);
+updateTable(); // Initial load

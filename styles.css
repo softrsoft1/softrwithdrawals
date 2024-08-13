@@ -1,102 +1,67 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, red, purple, green, yellow, blue);
-    color: #333;
-}
-
-header {
-    text-align: center;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-}
-
-header h1 {
-    font-size: 3em;
-    margin: 0;
-}
-
-header h2 {
-    font-size: 1.5em;
-    margin: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .transaction-container {
+    margin-top: 50px;
     width: 80%;
-    margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead th {
-    font-size: 1.2em;
-    padding: 15px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-}
-
-tbody td {
-    font-size: 1em;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
-}
-
-footer button {
-    font-size: 1.2em;
-    margin: 10px;
-    padding: 15px 25px;
-    border: none;
+    max-width: 600px;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-footer .home-button {
-    background: linear-gradient(45deg, red, yellow);
+#transaction-roll {
+    font-size: 16px;
+    color: #333;
 }
 
-footer .wallet-button {
-    background: linear-gradient(45deg, green, blue);
+.footer-buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
 }
 
-footer .invest-button {
-    background: linear-gradient(45deg, purple, pink);
+.btn {
+    padding: 15px 25px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-footer button:hover {
-    transform: scale(1.1);
+.home-btn {
+    background-color: #4CAF50;
 }
 
-@media (max-width: 768px) {
-    .transaction-container {
-        width: 90%;
-    }
+.home-btn:hover {
+    background-color: #45a049;
+}
 
-    footer button {
-        font-size: 1em;
-        padding: 10px 20px;
-    }
+.wallet-btn {
+    background-color: #008CBA;
+}
+
+.wallet-btn:hover {
+    background-color: #007BB5;
+}
+
+.invest-btn {
+    background-color: #f44336;
+}
+
+.invest-btn:hover {
+    background-color: #da190b;
 }

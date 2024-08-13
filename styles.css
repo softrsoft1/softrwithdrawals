@@ -30,6 +30,7 @@ header h2 {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 table {
@@ -75,28 +76,4 @@ footer button {
 }
 
 footer button:hover {
-    transform: scale(1.1);
-}
-
-footer .home-button {
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-}
-
-footer .wallet-button {
-    background: linear-gradient(45deg, #96e6a1, #d4fc79);
-}
-
-footer .invest-button {
-    background: linear-gradient(45deg, #84fab0, #8fd3f4);
-}
-
-@media (max-width: 768px) {
-    .transaction-container {
-        width: 90%;
-    }
-
-    footer button {
-        font-size: 1em;
-        padding: 10px 20px;
-    }
-}
+    transform: sca

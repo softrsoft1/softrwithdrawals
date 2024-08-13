@@ -2,6 +2,13 @@ const transactions = [
     { name: "John Doe", amount: "0.5 BTC", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
     { name: "Jane Smith", amount: "1.2 USDT", address: "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" },
     { name: "Mike Johnson", amount: "0.7 BTC", address: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8p92" },
+    { name: "Emily Davis", amount: "0.3 BTC", address: "1BoatSLRHtKNngkdXEeobR76b53LETtpyT" },
+    { name: "Chris Wilson", amount: "2.0 USDT", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
+    { name: "Sarah Lee", amount: "0.9 BTC", address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" },
+    { name: "Paul Walker", amount: "1.1 BTC", address: "3CMCRgEm8HVz3DrWaCCid3vAANE42jcEv9" },
+    { name: "Linda Brown", amount: "3.5 USDT", address: "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" },
+    { name: "George Harris", amount: "2.4 BTC", address: "1BoatSLRHtKNngkdXEeobR76b53LETtpyT" },
+    { name: "Anna Scott", amount: "0.4 USDT", address: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8p92" }
     // Add more transactions here...
 ];
 

@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Transactions</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="transaction-container">
-        <div id="transaction-roll">
-            <!-- This section will be populated by JavaScript -->
-        </div>
-    </div>
+const transactions = [
+    // Prearranged data (only a few examples are shown here)
+    { name: "Alice", amount: "0.034 BTC", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
+    { name: "Bob", amount: "0.5 BTC", address: "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" },
+    { name: "Charlie", amount: "0.1 BTC", address: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kyt4g6u" },
+    // Add more entries up to 200
+];
 
-    <div class="footer-buttons">
-        <a href="https://www.softrinvestment.com/" class="btn home-btn">GO TO HOME PAGE</a>
-        <a href="https://www.softrinvestment.com/my-wallet" class="btn wallet-btn">GO TO MY WALLET</a>
-        <a href="https://www.softrinvestment.com/invest-now" class="btn invest-btn">INVEST NOW</a>
-    </div>
+const transactionRoll = document.getElementById('transaction-roll');
+let currentIndex = 0;
 
-    <script src="scripts.js"></script>
-</body>
-</html>
+function displayTransaction() {
+    const transaction = transactions[currentIndex];
+    transactionRoll.innerHTML = `
+        <p><strong>Name:</strong> ${transaction.name}</p>
+        <p><strong>Amount Withdrawn:</strong> ${transaction.amount}</p>
+        <p><strong>Withdrawal BTC Address:</strong> ${transaction.address}</p>
+    `;
+
+    currentIndex = (currentIndex + 1) % transactions.length;
+
+    // Change display time (5, 10, or 15 seconds)
+    const displayTime = [5000, 10000, 15000][Math.floor(Math.random() * 3)];
+    setTimeout(displayTransaction, displayTime);
+}
+
+// Initial display
+displayTransaction();

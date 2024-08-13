@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdrawal Proof - Softr Investment</title>
+    <title>Soft Return Investment</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Daily Withdrawal Proof</h1>
-        <table>
+        <table id="withdrawalTable">
             <thead>
                 <tr>
-                    <th>Roll</th>
                     <th>Name</th>
-                    <th>Amount Withdrawn (BTC)</th>
+                    <th>Amount BTC Withdrawal</th>
                     <th>Withdrawal BTC Address</th>
                 </tr>
             </thead>
-            <tbody id="withdrawal-list">
-                <!-- JavaScript will dynamically populate this -->
+            <tbody id="tableBody">
+                <!-- Dynamic rows will be inserted here by JavaScript -->
             </tbody>
         </table>
     </div>
+
     <div class="footer">
         <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
         <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
         <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

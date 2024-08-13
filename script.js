@@ -1,7 +1,7 @@
 const firstNames = ["John", "Sarah", "Paul", "Emma", "Michael", "Liam", "Olivia", "Noah", "Sophia", "James"];
 const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Martinez", "Lopez"];
 const cryptoCurrencies = ["BTC", "USDT"];
-const transactions = generateTransactions(200);
+const transactions = generateTransactions(400);
 
 function generateRandomAddress(crypto) {
     if (crypto === "BTC") {

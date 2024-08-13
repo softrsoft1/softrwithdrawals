@@ -1,16 +1,33 @@
-const transactions = [
-    { name: "John Doe", amount: "0.5 BTC", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
-    { name: "Jane Smith", amount: "1.2 USDT", address: "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" },
-    { name: "Mike Johnson", amount: "0.7 BTC", address: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8p92" },
-    { name: "Emily Davis", amount: "0.3 BTC", address: "1BoatSLRHtKNngkdXEeobR76b53LETtpyT" },
-    { name: "Chris Wilson", amount: "2.0 USDT", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
-    { name: "Sarah Lee", amount: "0.9 BTC", address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" },
-    { name: "Paul Walker", amount: "1.1 BTC", address: "3CMCRgEm8HVz3DrWaCCid3vAANE42jcEv9" },
-    { name: "Linda Brown", amount: "3.5 USDT", address: "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" },
-    { name: "George Harris", amount: "2.4 BTC", address: "1BoatSLRHtKNngkdXEeobR76b53LETtpyT" },
-    { name: "Anna Scott", amount: "0.4 USDT", address: "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8p92" }
-    // Add more transactions here...
-];
+const firstNames = ["John", "Sarah", "Paul", "Emma", "Michael", "Liam", "Olivia", "Noah", "Sophia", "James"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Martinez", "Lopez"];
+const cryptoCurrencies = ["BTC", "USDT"];
+const transactions = generateTransactions(200);
+
+function generateRandomAddress(crypto) {
+    if (crypto === "BTC") {
+        return "1" + Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+    } else if (crypto === "USDT") {
+        return "T" + Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+    }
+}
+
+function generateTransactions(count) {
+    let transactions = [];
+    for (let i = 0; i < count; i++) {
+        const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        const crypto = cryptoCurrencies[Math.floor(Math.random() * cryptoCurrencies.length)];
+        const amount = (Math.random() * (5 - 0.1) + 0.1).toFixed(2) + " " + crypto;
+        const address = generateRandomAddress(crypto);
+
+        transactions.push({
+            name: `${firstName} ${lastName}`,
+            amount: amount,
+            address: address
+        });
+    }
+    return transactions;
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

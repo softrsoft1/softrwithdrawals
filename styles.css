@@ -1,107 +1,66 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ff5733, #33ff57, #5733ff, #ff33c4);
-    color: white;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+const transactionList = document.getElementById('transaction-list');
+
+const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'William', 'James', 'Ava', 'Sophia', 'Lucas', 'Elijah', 'Mason', 'Harper', 'John', 'Robert', 'Sarah', 'Abigail'];
+const countries = ['UK', 'South Africa', 'Afrikaans'];
+const addresses = [
+    '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
+    '3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy',
+    'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwfha0',
+    '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+    '0x53d284357ec70ce289d6d64134dfac8e511c8a3d'
+];
+const amounts = ['0.05 BTC', '0.2 BTC', '1.5 BTC', '0.75 BTC', '0.01 BTC', '50 USDT', '150 USDT', '250 USDT', '500 USDT'];
+
+let transactions = [];
+
+function getRandomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
 }
 
-.header {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
+function generateTransaction() {
+    const name = getRandomItem(names) + ' (' + getRandomItem(countries) + ')';
+    const amount = getRandomItem(amounts);
+    const address = getRandomItem(addresses);
+
+    return {
+        name,
+        amount,
+        address
+    };
 }
 
-.header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-.header h2 {
-    font-size: 1.5rem;
-    margin: 10px 0 0;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.transaction-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    color: black;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background: #333;
-    color: white;
-}
-
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.footer button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.footer button:nth-child(2) {
-    background-color: #f44336;
-}
-
-.footer button:nth-child(3) {
-    background-color: #008CBA;
-}
-
-@media (max-width: 768px) {
-    table, th, td {
-        font-size: 12px;
-    }
-    .header h1 {
-        font-size: 2rem;
-    }
-    .header h2 {
-        font-size: 1.2rem;
-    }
-    .footer button {
-        padding: 10px 20px;
-        font-size: 14px;
+function populateInitialTransactions() {
+    for (let i = 0; i < 400; i++) {
+        transactions.push(generateTransaction());
     }
 }
+
+function displayTransactions(startIndex) {
+    const displayData = transactions.slice(startIndex, startIndex + 10);
+    transactionList.innerHTML = displayData.map(transaction => 
+        `<tr>
+            <td>${transaction.name}</td>
+            <td>${transaction.amount}</td>
+            <td>${transaction.address}</td>
+        </tr>`
+    ).join('');
+}
+
+function randomizeInterval() {
+    return Math.floor(Math.random() * (15000 - 5000 + 1)) + 5000;
+}
+
+function startTransactionRoll() {
+    let index = 0;
+    displayTransactions(index);
+    
+    setInterval(function() {
+        index = (index + 10) % transactions.length;
+        displayTransactions(index);
+    }, randomizeInterval());
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    populateInitialTransactions();
+    startTransactionRoll();
+});

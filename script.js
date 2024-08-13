@@ -6,15 +6,18 @@ const transactions = [
     // Add more entries here...
 ];
 
-const transactionRoll = document.getElementById('transaction-roll');
+const transactionRoll = document.querySelector('#transaction-roll tbody');
 let currentIndex = 0;
 
 function displayTransaction() {
     const transaction = transactions[currentIndex];
+    
     transactionRoll.innerHTML = `
-        <p><strong>Name:</strong> ${transaction.name}</p>
-        <p><strong>Amount Withdrawn:</strong> ${transaction.amount}</p>
-        <p><strong>Withdrawal BTC Address:</strong> ${transaction.btcAddress}</p>
+        <tr>
+            <td>${transaction.name}</td>
+            <td>${transaction.amount}</td>
+            <td>${transaction.btcAddress}</td>
+        </tr>
     `;
 
     currentIndex = (currentIndex + 1) % transactions.length;

@@ -3,38 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Return Investment - Daily Withdrawal Proof</title>
+    <title>Bitcoin Transactions</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Soft Return Investment</h1>
-        <h2>Daily Withdrawal Proof</h2>
-    </header>
-
-    <main>
-        <div class="transaction-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Amount Withdrawn</th>
-                        <th>Withdrawal Address</th>
-                    </tr>
-                </thead>
-                <tbody id="transaction-list">
-                    <!-- Dynamic Content Here -->
-                </tbody>
-            </table>
-        </div>
-    </main>
-
+    <div class="container">
+        <h2>Recent Bitcoin Transactions</h2>
+        <table id="transactions-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount Withdrawn (BTC)</th>
+                    <th>Withdrawal BTC Address</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-body">
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    
     <footer>
-        <button class="home-button" onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
-        <button class="wallet-button" onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
-        <button class="invest-button" onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
+        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

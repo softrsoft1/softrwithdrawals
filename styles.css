@@ -1,4 +1,24 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.image-container {
+    text-align: center;
+    width: 100%;
+}
+
+.image-container img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     color: #333;

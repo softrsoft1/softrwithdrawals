@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+    background: linear-gradient(45deg, red, purple, green, yellow, blue);
     color: #333;
 }
 
@@ -70,10 +70,33 @@ footer button {
     border: none;
     border-radius: 10px;
     color: #fff;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
+footer .home-button {
+    background: linear-gradient(45deg, red, yellow);
+}
+
+footer .wallet-button {
+    background: linear-gradient(45deg, green, blue);
+}
+
+footer .invest-button {
+    background: linear-gradient(45deg, purple, pink);
+}
+
 footer button:hover {
-    transform: sca
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .transaction-container {
+        width: 90%;
+    }
+
+    footer button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}

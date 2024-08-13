@@ -1,62 +1,35 @@
 const names = [
-    'John Smith', 'Jane Doe', 'Michael Johnson', 'Emily Davis', 'Daniel Wilson',
-    'Sarah Brown', 'James Taylor', 'Linda Moore', 'David Anderson', 'Laura Thomas',
-    'Chris Jackson', 'Jessica White', 'Matthew Harris', 'Olivia Martin', 'Andrew Thompson',
-    'Sophia Robinson', 'Daniel Garcia', 'Isabella Martinez', 'Ethan Clark', 'Charlotte Lee',
-    'Jacob Lewis', 'Ava Walker', 'William Hall', 'Mia Allen', 'James Young',
-    'Lucas Scott', 'Madison Lewis', 'Jackson Clark', 'Avery Hall', 'Liam Young',
-    'Mason Harris', 'Ella Lee', 'Ethan Walker', 'Zoe Brown', 'Noah Allen',
-    // More names...
+    "John Smith", "Jane Doe", "Michael Johnson", "Emily Davis", "Chris Brown", "Sarah Wilson",
+    "David Clark", "Jessica Moore", "James Thompson", "Laura Garcia", "Liam Lewis", "Emma Walker",
+    "Mason Allen", "Olivia Robinson", "Noah White", "Isabella Young", "Lucas King", "Sophia Hill",
+    "Benjamin Scott", "Mia Green", "Elijah Adams", "Amelia Baker", "Oliver Nelson", "Ava Carter",
+    "Ethan Mitchell", "Charlotte Perez", "Jacob Roberts", "Abigail Turner", "William Phillips",
+    "Sofia Parker", "Alexander Evans", "Mila Collins", "Henry Edwards", "Ella Stewart",
+    "Daniel Morris", "Zoe Sanchez", "Jackson Rivera", "Chloe Bennett", "Sebastian Price", "Layla Reed"
+    // Add more names to total 200 unique names
 ];
 
-const generateRandomAddress = () => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let address = '0x';
-    for (let i = 0; i < 40; i++) {
-        address += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return address;
-};
+const cryptoAddresses = Array.from({ length: 200 }, () =>
+    Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+);
 
-const generateRandomAmount = () => {
-    return (Math.floor(Math.random() * (50000 - 50 + 1)) + 50).toFixed(2);
-};
+const generateRandomAmount = () => (Math.random() * (10000 - 50) + 50).toFixed(2);
 
-const generateRandomData = (count) => {
-    let data = [];
-    for (let i = 0; i < count; i++) {
+const generateTableRows = () => {
+    const tbody = document.querySelector("#crypto-table tbody");
+    tbody.innerHTML = ""; // Clear previous rows
+
+    for (let i = 0; i < 10; i++) {
+        const row = document.createElement("tr");
         const name = names[Math.floor(Math.random() * names.length)];
-        const amount = `$${generateRandomAmount()}`;
-        const address = generateRandomAddress();
-        data.push({ name, amount, address });
+        const amount = generateRandomAmount();
+        const address = cryptoAddresses[Math.floor(Math.random() * cryptoAddresses.length)];
+
+        row.innerHTML = `<td>${name}</td><td>${amount}</td><td>${address}</td>`;
+        tbody.appendChild(row);
     }
-    return data;
 };
 
-const updateTable = () => {
-    const data = generateRandomData(400);
-    let currentIndex = 0;
+setInterval(generateTableRows, 10000); // Change table content every 10 seconds
 
-    const displayData = () => {
-        const tableBody = document.querySelector('#crypto-table tbody');
-        tableBody.innerHTML = '';
-
-        for (let i = 0; i < 10; i++) {
-            const row = document.createElement('tr');
-            const { name, amount, address } = data[(currentIndex + i) % data.length];
-            row.innerHTML = `
-                <td>${name}</td>
-                <td>${amount}</td>
-                <td>${address}</td>
-            `;
-            tableBody.appendChild(row);
-        }
-
-        currentIndex = (currentIndex + 10) % data.length;
-    };
-
-    displayData();
-    setInterval(displayData, Math.floor(Math.random() * (30000 - 10000 + 1)) + 10000);
-};
-
-window.onload = updateTable;
+window.onload = generateTableRows;

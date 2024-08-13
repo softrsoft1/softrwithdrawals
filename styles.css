@@ -1,66 +1,80 @@
-const transactionList = document.getElementById('transaction-list');
-
-const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'William', 'James', 'Ava', 'Sophia', 'Lucas', 'Elijah', 'Mason', 'Harper', 'John', 'Robert', 'Sarah', 'Abigail'];
-const countries = ['UK', 'South Africa', 'Afrikaans'];
-const addresses = [
-    '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
-    '3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy',
-    'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwfha0',
-    '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
-    '0x53d284357ec70ce289d6d64134dfac8e511c8a3d'
-];
-const amounts = ['0.05 BTC', '0.2 BTC', '1.5 BTC', '0.75 BTC', '0.01 BTC', '50 USDT', '150 USDT', '250 USDT', '500 USDT'];
-
-let transactions = [];
-
-function getRandomItem(array) {
-    return array[Math.floor(Math.random() * array.length)];
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, green, red, yellow, purple);
+    color: #fff;
 }
 
-function generateTransaction() {
-    const name = getRandomItem(names) + ' (' + getRandomItem(countries) + ')';
-    const amount = getRandomItem(amounts);
-    const address = getRandomItem(addresses);
-
-    return {
-        name,
-        amount,
-        address
-    };
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-function populateInitialTransactions() {
-    for (let i = 0; i < 400; i++) {
-        transactions.push(generateTransaction());
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header h2 {
+    margin: 10px 0 0;
+    font-size: 1.5em;
+}
+
+.transaction-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+tbody td {
+    font-size: 1em;
+    padding: 8px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+footer button {
+    font-size: 1.2em;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #000;
+    transition: background-color 0.3s;
+}
+
+footer button:hover {
+    background-color: #444;
+}
+
+@media (max-width: 768px) {
+    .transaction-container {
+        width: 100%;
+    }
+
+    footer button {
+        font-size: 1em;
+        padding: 8px 15px;
     }
 }
-
-function displayTransactions(startIndex) {
-    const displayData = transactions.slice(startIndex, startIndex + 10);
-    transactionList.innerHTML = displayData.map(transaction => 
-        `<tr>
-            <td>${transaction.name}</td>
-            <td>${transaction.amount}</td>
-            <td>${transaction.address}</td>
-        </tr>`
-    ).join('');
-}
-
-function randomizeInterval() {
-    return Math.floor(Math.random() * (15000 - 5000 + 1)) + 5000;
-}
-
-function startTransactionRoll() {
-    let index = 0;
-    displayTransactions(index);
-    
-    setInterval(function() {
-        index = (index + 10) % transactions.length;
-        displayTransactions(index);
-    }, randomizeInterval());
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    populateInitialTransactions();
-    startTransactionRoll();
-});

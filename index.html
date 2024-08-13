@@ -7,28 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Recent Bitcoin Transactions</h2>
-        <table id="transactions-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount Withdrawn (BTC)</th>
-                    <th>Withdrawal BTC Address</th>
-                </tr>
-            </thead>
-            <tbody id="transaction-body">
-                <!-- Data will be dynamically inserted here -->
-            </tbody>
-        </table>
+    <div class="transaction-container">
+        <div id="transaction-roll">
+            <!-- This section will be populated by JavaScript -->
+        </div>
     </div>
-    
-    <footer>
-        <button onclick="window.location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
-        <button onclick="window.location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
-        <button onclick="window.location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
-    </footer>
 
-    <script src="script.js"></script>
+    <div class="footer-buttons">
+        <a href="https://www.softrinvestment.com/" class="btn home-btn">GO TO HOME PAGE</a>
+        <a href="https://www.softrinvestment.com/my-wallet" class="btn wallet-btn">GO TO MY WALLET</a>
+        <a href="https://www.softrinvestment.com/invest-now" class="btn invest-btn">INVEST NOW</a>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

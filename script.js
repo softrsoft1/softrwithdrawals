@@ -39,7 +39,7 @@ const generateTableRows = () => {
     for (let i = 0; i < 10; i++) {
         const row = document.createElement("tr");
         const name = names[Math.floor(Math.random() * names.length)];
-        const amount = generateRandomAmount($);
+        const amount = generateRandomAmount();
         const address = cryptoAddresses[Math.floor(Math.random() * cryptoAddresses.length)];
 
         row.innerHTML = `<td>${name}</td><td>${amount}</td><td>${address}</td>`;

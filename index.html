@@ -1,52 +1,41 @@
-const names = [
-    "Themba Zulu", "Bongani Sithole", "Sibusiso Ntuli", "Gerhardus van Wyk", "Cornelia Smith", 
-    "Riaan van Zyl", "Marietjie Fourie", "Coenraad Louw", "Liezel Smit", "Francois Viljoen", 
-    "Annetjie Maree", "Diederik Visser", "Nadine le Roux", "Gert van Niekerk", "Antoinette Bosman", 
-    "Danie van Rensburg", "Estelle de Villiers", "Cobus van Heerden", "Adriana Jacobs", 
-    "Nicolette Cloete", "Stephanus Malan", "Izelle Theron", "Charl Marais", "Martie Grobler", 
-    "Jaco van Tonder", "Adelé van der Walt", "Bennie Olivier", "Yolandi van Staden", "Gerda Nel", 
-    "Pierre Joubert", "Ilze van Rooyen", "Kobus van der Linde", "Marelize Burger", "Rudi de Beer", 
-    "Sonja van der Westhuizen", "Eben van der Linde", "Annette Coetzee", "Deon Botha", 
-    "Chantel Prinsloo", "André van Rensburg", "Nico van Dyk", "Liesl van Heerden", 
-    "Jacques Fourie", "Theresa van der Merwe", "Vusi Masuku", "Tshepo Mthembu", "Thulani Ngcobo", 
-    "John Smith", "Jane Doe", "Michael Johnson", "Emily Davis", "Chris Brown", 
-    "Sarah Wilson", "David Clark", "Jessica Moore", "James Thompson", "Laura Garcia", 
-    "Liam Lewis", "Emma Walker", "Mason Allen", "Olivia Robinson", "Noah White", 
-    "Isabella Young", "Lucas King", "Sophia Hill", "Thabo Mokoena", "Sipho Ndlovu", 
-    "Mpho Dlamini", "Kagiso Khumalo", "Thandiwe Mlambo", "Zanele Gumede", "Nomvula Sibanda", 
-    "Nthabiseng Mkhize", "Lerato Mokoena", "Nomsa Ncube", "Palesa Ngwenya", 
-    "Khanyisile Hadebe", "Nokuthula Mpofu", "Nosipho Mkhwanazi", "Lesedi Maseko", 
-    "Mbali Mofokeng", "Gugu Nkosi", "Kamohelo Dube", "Ntokozo Mdletshe", "Siyabonga Mtshali", 
-    "Andile Manana", "Nhlanhla Madonsela", "Sifiso Shabangu", "Hlengiwe Nyathi", 
-    "Jabulani Khoza", "Xolani Makhanya", "Nkosinathi Ndlovu", "Mandla Zulu", "Bheki Ngwenya", 
-    "Lwazi Mkhize", "Phumzile Gcabashe", "Lindiwe Shongwe", "Sindi Zuma", 
-    "Zodwa Nkomo", "Mabaso", "Mguni", "Mathenjwa", "Tshabalala", "Mthimkhulu", 
-    "Ncube", "Ntshangase", "Xulu", "Ngubane", "Qwabe", "Jan van der Merwe", 
-    "Pieter Botha", "Charlene de Klerk", "Hendrik Kruger", "Annelize Swart", 
-    "Willem Pretorius", "Elize Vermeulen", "Johan Steyn", "Marinda du Plessis"
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFT RETURN INVESTMENT - Daily Withdrawal Proof</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="image-container">
+        <img src="2d561159-b108-41f1-b226-509382bf8cce.png" alt="Company Logo">
+    </div>
+    <header>
+        <h1>SOFT RETURN INVESTMENT</h1>
+        <h2>Daily Withdrawal Proof</h2>
+    </header>
+    
+    <main>
+        <table id="crypto-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount Withdrawn ($)</th>
+                    <th>Withdrawal Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+    
+    <footer>
+        <button onclick="location.href='https://www.softrinvestment.com/'">Go to Home Page</button>
+        <button onclick="location.href='https://www.softrinvestment.com/my-wallet'">Go to My Wallet</button>
+        <button onclick="location.href='https://www.softrinvestment.com/invest-now'">Invest Now</button>
+    </footer>
 
-const cryptoAddresses = Array.from({ length: 600 }, () =>
-    Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-);
-
-const generateRandomAmount = () => (Math.random() * (10000 - 50) + 50).toFixed(2);
-
-const generateTableRows = () => {
-    const tbody = document.querySelector("#crypto-table tbody");
-    tbody.innerHTML = ""; // Clear previous rows
-
-    for (let i = 0; i < 10; i++) {
-        const row = document.createElement("tr");
-        const name = names[Math.floor(Math.random() * names.length)];
-        const amount = generateRandomAmount();
-        const address = cryptoAddresses[Math.floor(Math.random() * cryptoAddresses.length)];
-
-        row.innerHTML = `<td>${name}</td><td>${amount}</td><td>${address}</td>`;
-        tbody.appendChild(row);
-    }
-};
-
-setInterval(generateTableRows, 10000); // Change table content every 10 seconds
-
-window.onload = generateTableRows;
+    <script src="script.js"></script>
+</body>
+</html>

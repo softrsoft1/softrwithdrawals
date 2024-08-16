@@ -27,7 +27,7 @@ const names = [
 ];
 
 const cryptoAddresses = Array.from({ length: 600 }, () =>
-    Math.random().toString(36).substring(10, 15) + Math.random().toString(36).substring(10, 15)
+    Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 );
 
 const generateRandomAmount = () => (Math.random() * (10000 - 50) + 50).toFixed(2);
